@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import { AuthContext } from './provider';
 import axios from 'axios';
 
@@ -6,6 +6,7 @@ import axios from 'axios';
  const Authstatus = () => {
 
     const {loginStatus, setLoginStatus} = useContext(AuthContext);
+    console.log(loginStatus);
     
     const get = "http://localhost:3001/auth";
     axios.get(

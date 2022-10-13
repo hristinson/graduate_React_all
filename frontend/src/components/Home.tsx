@@ -23,7 +23,7 @@ function StarWarsCarousel() {
      } </Carousel>
     </div>
 
-    {loginStatus? <div>true</div> : <div>false</div>}
+    {loginStatus? <div>Welcome to SWAPI portal!</div> : <div>please login...</div>}
     
     <div className="main_carousel">
     <Carousel variant="dark" indicators={false} fade={true} controls={false} pause={'hover'} >

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
 import './DataView.css';
@@ -39,6 +39,7 @@ const DataView = () => {
 
     Authstatus()
     const {loginStatus} = useContext(AuthContext)
+    const clickBy = useCallback(() => {alert(`show me the credits!`)}, [])
 
     const [countItems, setCountItems] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -76,7 +77,7 @@ const DataView = () => {
         return (
             
             <div className=''>
-                {loginStatus? <div>true</div> : <div>false</div>}
+                
                 {isLoading ? <LoadingSpinner /> : <></>}
                 {  data.map((data: PeopleData, key: number)=>{ 
 
@@ -101,9 +102,13 @@ const DataView = () => {
                         <div className="">{data.height}</div>
                         <Rating value={rndRaiting()} readOnly cancel={false}></Rating>
                     </div>
-                    <div className="">
-                        <Button icon="pi pi-shopping-cart" label="By" disabled={data.created === 'OUTOFSTOCK'}></Button>
-                    </div>
+
+                    {loginStatus? <div className="">
+                        <Button icon="pi pi-shopping-cart" onClick={clickBy} label="By" disabled={data.created === 'OUTOFSTOCK'}></Button>
+                    </div> : <div>please login...</div>}
+                   
+
+
                 </div>
             </div>
             

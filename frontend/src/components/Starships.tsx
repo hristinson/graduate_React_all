@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
 import './DataView.css';
@@ -15,7 +15,8 @@ import img7 from '../images/starships/7.jpeg';
 import "./spinner.css";
 import LoadingSpinner from "./LoadingSpinner";
 import { StarshipsData } from "../models";
-import AuthContextElement from './authstatus';
+import Authstatus from './authstatus';
+import { AuthContext } from './provider';
 
 const rndRaiting = () => {
     return (Math.floor(Math.random() * 7));
@@ -36,6 +37,11 @@ const generateRandImg = () => {
 }
 
 const DataView = () => {
+
+    Authstatus()
+    const {loginStatus} = useContext(AuthContext)
+    const clickBy = useCallback(() => {alert(`show me the credits!`)}, [])
+
     const [countItems, setCountItems] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -72,7 +78,7 @@ const DataView = () => {
         return (
             
             <div className=''>
-                
+                 
                 {isLoading ? <LoadingSpinner /> : <></>}
                 {  data.map((data: StarshipsData, key: number)=>{ 
 
@@ -97,9 +103,9 @@ const DataView = () => {
                         <div className="">{data.crew}</div>
                         <Rating value={rndRaiting()} readOnly cancel={false}></Rating>
                     </div>
-                    <div className="">
-                        <Button icon="pi pi-shopping-cart" label="By" disabled={data.passengers === 'OUTOFSTOCK'}></Button>
-                    </div>
+                    {loginStatus? <div className="">
+                        <Button icon="pi pi-shopping-cart" onClick={clickBy} label="By" disabled={data.passengers === 'OUTOFSTOCK'}></Button>
+                    </div> : <div>please login...</div>}
                 </div>
             </div>
             
