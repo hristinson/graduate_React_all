@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Rating } from 'primereact/rating';
 import { Button } from 'primereact/button';
 import './DataView.css';
@@ -14,7 +14,8 @@ import img6 from '../images/people/6.jpeg';
 import "./spinner.css";
 import LoadingSpinner from "./LoadingSpinner";
 import { PeopleData } from "../models";
-import AuthContextElement from './authstatus';
+import Authstatus from './authstatus';
+import { AuthContext } from './provider';
 
 const rndRaiting = () => {
     return (Math.floor(Math.random() * 7));
@@ -35,6 +36,10 @@ const generateRandImg = () => {
 }
 
 const DataView = () => {
+
+    Authstatus()
+    const {loginStatus} = useContext(AuthContext)
+
     const [countItems, setCountItems] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -71,7 +76,7 @@ const DataView = () => {
         return (
             
             <div className=''>
-                <AuthContextElement />
+                {loginStatus? <div>true</div> : <div>false</div>}
                 {isLoading ? <LoadingSpinner /> : <></>}
                 {  data.map((data: PeopleData, key: number)=>{ 
 

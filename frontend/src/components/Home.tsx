@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import { carouselPicores } from '../data/carouselData';
 import { carouselText } from '../data/textCarouselData';
-import AuthContextElement from "./authstatus";
+import Authstatus from './authstatus';
+import { AuthContext } from './provider';
 
 function StarWarsCarousel() {
+  Authstatus()
+  const {loginStatus} = useContext(AuthContext)
 
   return (
     
@@ -20,7 +23,7 @@ function StarWarsCarousel() {
      } </Carousel>
     </div>
 
-    <AuthContextElement />
+    {loginStatus? <div>true</div> : <div>false</div>}
     
     <div className="main_carousel">
     <Carousel variant="dark" indicators={false} fade={true} controls={false} pause={'hover'} >

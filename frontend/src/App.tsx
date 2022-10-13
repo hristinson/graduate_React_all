@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header  from './components/Header';
@@ -12,10 +12,12 @@ import Login  from './components/Login';
 import { AuthContext } from './components/provider';
 
 function App() {
-     
+  const [loginStatus, setLoginStatus] = useState<Boolean>(false)
+  const providerLogin = useMemo( () => ({loginStatus, setLoginStatus}), [loginStatus, setLoginStatus] )
+
   return (
     <div className="App">
-<AuthContext.Provider value="false">
+<AuthContext.Provider value={providerLogin}>
 <BrowserRouter>
   <Header />
     <Routes>

@@ -72,7 +72,7 @@ const DataView = () => {
         return (
             
             <div className=''>
-                <AuthContextElement />
+                
                 {isLoading ? <LoadingSpinner /> : <></>}
                 {  data.map((data: VehiclesData, key: number)=>{ 
 

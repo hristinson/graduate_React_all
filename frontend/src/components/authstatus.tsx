@@ -1,13 +1,12 @@
 import React, {useContext} from 'react';
 import { AuthContext } from './provider';
 import axios from 'axios';
-import { useGlobalState } from '../state';  
 
 
- const AuthContextElement = () => {
+ const Authstatus = () => {
 
-    let authstate = useContext(AuthContext);
-    const [value, update] = useGlobalState('auth');
+    const {loginStatus, setLoginStatus} = useContext(AuthContext);
+    
     const get = "http://localhost:3001/auth";
     axios.get(
         get,
@@ -15,17 +14,14 @@ import { useGlobalState } from '../state';
        )
       .then((res) => {
        
-       if (res.data) { update(true) } else { update(false) } 
+       if (res.data) { setLoginStatus(true) } else { setLoginStatus(false) } 
        
    
       });
 
-      value === true ? authstate = `You are authorized` : authstate = `please login`
-
-      return (<div className='loginedIn'>{authstate}</div>)
   };
 
-export default AuthContextElement;
+export default Authstatus;
 
 
 
