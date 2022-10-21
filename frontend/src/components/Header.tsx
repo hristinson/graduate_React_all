@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Floater from "react-floater";
 import Joyride from "react-joyride";
 
-
 const Header = () => {
   const state = {
     steps: [
@@ -30,12 +29,7 @@ const Header = () => {
 
   return (
     <div>
-      <Joyride
-        steps={steps}
-        continuous={true}
-        scrollToFirstStep={true}
-        //callback={CallBackProps}
-      />
+      <Joyride steps={steps} continuous={true} scrollToFirstStep={true} />
       <Navbar bg="secondary" variant="dark">
         <Container>
           <Nav className="me-auto my-2 my-lg-0">
