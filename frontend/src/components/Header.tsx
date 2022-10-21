@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Floater from "react-floater";
 import Joyride from "react-joyride";
 
+
 const Header = () => {
   const state = {
     steps: [
@@ -14,10 +15,13 @@ const Header = () => {
         target: ".my-1-step",
         content:
           "People/Planets/Starships/Vehicles are section of type of persons from Star Wars",
+        textAlign: "center",
+        placement: "bottom" as const,
       },
       {
         target: ".my-2-step",
         content: "If you want to make a purchases, you must login first!",
+        textAlign: "center",
       },
     ],
   };
@@ -26,7 +30,12 @@ const Header = () => {
 
   return (
     <div>
-      <Joyride steps={steps} />
+      <Joyride
+        steps={steps}
+        continuous={true}
+        scrollToFirstStep={true}
+        //callback={CallBackProps}
+      />
       <Navbar bg="secondary" variant="dark">
         <Container>
           <Nav className="me-auto my-2 my-lg-0">
