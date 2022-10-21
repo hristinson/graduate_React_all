@@ -16,6 +16,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import { PeopleData } from "../models";
 import Authstatus from './authstatus';
 import { AuthContext } from './provider';
+import Floater from 'react-floater';
 
 const rndRaiting = () => {
     return (Math.floor(Math.random() * 7));
@@ -97,19 +98,23 @@ const DataView = () => {
                     </div>
 
                     <div className="">
+                    
                     <img height={200} width={200} src={generateRandImg()} onError={(e) => console.log(`error`)}alt={data.name} />
+                    
                         <div className="">{data.name}</div>
                         <div className="">{data.height}</div>
                         <Rating value={rndRaiting()} readOnly cancel={false}></Rating>
                     </div>
-
+                    
                     {loginStatus? <div className="">
                         <Button icon="pi pi-shopping-cart" onClick={clickBy} label="By" disabled={data.created === 'OUTOFSTOCK'}></Button>
+                        
                     </div> : <div>please login...</div>}
                    
 
 
                 </div>
+                
             </div>
             
             );

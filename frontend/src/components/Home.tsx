@@ -4,15 +4,17 @@ import { carouselPicores } from '../data/carouselData';
 import { carouselText } from '../data/textCarouselData';
 import Authstatus from './authstatus';
 import { AuthContext } from './provider';
+import Floater from 'react-floater';
+
 
 function StarWarsCarousel() {
   Authstatus()
   const {loginStatus} = useContext(AuthContext)
 
   return (
-    
+   
     <div className="main">
-    
+        
       <div className="main_text">
         <Carousel variant="dark" indicators={false} fade={true} controls={false} pause={'hover'} >
         {
@@ -22,9 +24,9 @@ function StarWarsCarousel() {
         </Carousel.Item>)
      } </Carousel>
     </div>
-
+    <Floater content="Please use Login menu to logining in the system!">
     {loginStatus? <div>Welcome to SWAPI portal!</div> : <div>please login...</div>}
-    
+    </Floater>
     <div className="main_carousel">
     <Carousel variant="dark" indicators={false} fade={true} controls={false} pause={'hover'} >
         {carouselPicores.map((element, key) => <Carousel.Item interval={800} key={key} > 
@@ -32,8 +34,11 @@ function StarWarsCarousel() {
         </Carousel.Item>)
      } </Carousel>
     </div>
+        
+
 
     </div>
+    
   );
 }
 
