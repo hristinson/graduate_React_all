@@ -9,5 +9,3 @@ cd ./backend && nodemon
 ### frontend:
 
 cd ./frontend && npm start
-
-
