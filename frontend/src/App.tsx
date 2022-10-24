@@ -10,6 +10,13 @@ import Starships  from './components/Starships';
 import Vehicles  from './components/Vehicles';
 import Login  from './components/Login';
 import { AuthContext } from './components/provider';
+import dynamic from 'next/dynamic'
+const Tour = dynamic(
+  () => import('./components/Tour/Tour'),
+  { ssr: false }
+)
+
+
 
 function App() {
   const [loginStatus, setLoginStatus] = useState<Boolean>(false)
@@ -20,6 +27,7 @@ function App() {
 <AuthContext.Provider value={providerLogin}>
 <BrowserRouter>
   <Header />
+  <Tour />
     <Routes>
       <Route path="/" element={ <Home />}></Route>
       <Route path="/people" element={ <People />}></Route>

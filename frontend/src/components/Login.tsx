@@ -50,7 +50,7 @@ const Login = () => {
     <div className='App'>
     <div className='logindialog'>
     <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3 tour-step3" controlId="formBasicEmail">
         <Form.Label>Login</Form.Label>
         <Form.Control type="user" placeholder="Enter user name" onChange={loginChange} />
         <Form.Text className="text-muted">
@@ -58,7 +58,7 @@ const Login = () => {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword" >
+      <Form.Group className="mb-3 tour-step4" controlId="formBasicPassword" >
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" onChange={pwdChange} />
       </Form.Group>
