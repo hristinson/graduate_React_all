@@ -13,11 +13,7 @@ const Login = () => {
     state: { tourActive },
   } = useAppContext();
 
-  useMount(() => {
-    if (tourActive) {
-      setState({ stepIndex: 0, tourActive: true });
-    }
-  });
+ 
 
   const navigate = useNavigate();
   const [login, setLogin] = useState(``);
@@ -57,6 +53,14 @@ const Login = () => {
     [login, password, navigate]
   );
 
+
+  useMount(() => {
+    if (tourActive) {
+      setState({ tourActive: true , run: true});
+    }
+  });
+
+
   return (
     <div className="App">
       <div className="logindialog tour-step3">
@@ -92,6 +96,9 @@ const Login = () => {
       </div>
     </div>
   );
+
+
+ 
 };
 
 export default Login;

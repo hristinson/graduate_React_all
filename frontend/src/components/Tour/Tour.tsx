@@ -42,10 +42,10 @@ const Tour = () => {
   const navigate = useNavigate();
 
   const handleCallback = (data: CallBackProps) => {
-    const { index, type } = data;
+    const  { action, index, type } = data;
 
-    if (type === "step:after" && index === 1 /* or step.target === '#home' */) {
-      setState({ tourActive: true });
+    if (type === "step:after" && index === 1 && action === 'next' ) {
+      setState({ run: false, tourActive: true });
       navigate("/login");
     }
   };
@@ -55,7 +55,7 @@ const Tour = () => {
       <Outlet />
       <JoyRide
         callback={handleCallback}
-        debug={true}
+        //debug={true}
         continuous
         steps={steps}
         styles={{
@@ -63,7 +63,7 @@ const Tour = () => {
             arrowColor: "#e3ffeb",
             backgroundColor: "#ffffeb",
             overlayColor: "rgba(79, 79, 79, 3.6)",
-            primaryColor: "#060",
+            primaryColor: "#f00",
             textColor: "#004a14",
             width: 500,
             zIndex: 100,
@@ -72,7 +72,7 @@ const Tour = () => {
             textAlign: "center",
           },
           buttonNext: {
-            backgroundColor: "red",
+            backgroundColor: "blue",
           },
           buttonBack: {
             marginRight: 10,
