@@ -1,5 +1,5 @@
 import React from "react";
-import JoyRide from "react-joyride";
+import JoyRide, { ACTIONS, EVENTS } from "react-joyride";
 const TOUR_STEPS = [
   {
     target: ".tour-step1",
@@ -38,6 +38,15 @@ const Tour = () => {
         showSkipButton={true}
         showProgress={true}
         styles={{
+          options: {
+            arrowColor: '#e3ffeb',
+            backgroundColor: '#e3ffeb',
+            overlayColor: 'rgba(79, 26, 0, 0.4)',
+            primaryColor: '#f60',
+            textColor: '#004a14',
+            width: 500,
+            zIndex: 100,
+          },
           tooltipContainer: {
               textAlign: "center"
             },
