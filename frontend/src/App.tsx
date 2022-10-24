@@ -11,6 +11,7 @@ import Vehicles  from './components/Vehicles';
 import Login  from './components/Login';
 import { AuthContext } from './components/provider';
 import dynamic from 'next/dynamic'
+import { AppProvider } from './components/Tour/context';
 const Tour = dynamic(
   () => import('./components/Tour/Tour'),
   { ssr: false }
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <AppProvider>
 <AuthContext.Provider value={providerLogin}>
 <BrowserRouter>
   <Header />
@@ -39,6 +41,7 @@ function App() {
   <Footer />
 </BrowserRouter>
 </AuthContext.Provider>
+</AppProvider>
     </div>
   );
 }
