@@ -4,7 +4,8 @@ const TOUR_STEPS = [
   {
     target: ".tour-step1",
     content: "step 1",
-    disableBeacon: true
+    disableBeacon: false,
+    
   },
   {
     target: ".tour-step2",
@@ -27,7 +28,7 @@ const TOUR_STEPS = [
 
 const Tour = () => {
 
-  
+
 
   return (
     <>
