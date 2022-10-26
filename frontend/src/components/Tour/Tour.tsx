@@ -2,7 +2,7 @@ import React from "react";
 import JoyRide, { CallBackProps } from "react-joyride";
 import { useAppContext } from "./context";
 import { useMount } from "react-use";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Tour = () => {
   const {
@@ -52,7 +52,7 @@ const Tour = () => {
 
   return (
     <>
-      <Outlet />
+      
       <JoyRide
         callback={handleCallback}
         //debug={true}
