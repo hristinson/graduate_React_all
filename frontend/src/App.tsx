@@ -10,6 +10,14 @@ import Starships  from './components/Starships';
 import Vehicles  from './components/Vehicles';
 import Login  from './components/Login';
 import { AuthContext } from './components/provider';
+import dynamic from 'next/dynamic'
+import { AppProvider } from './components/Tour/context';
+const Tour = dynamic(
+  () => import('./components/Tour/Tour'),
+  { ssr: false }
+)
+
+
 
 function App() {
   const [loginStatus, setLoginStatus] = useState<Boolean>(false)
@@ -17,9 +25,11 @@ function App() {
 
   return (
     <div className="App">
+      <AppProvider>
 <AuthContext.Provider value={providerLogin}>
 <BrowserRouter>
   <Header />
+  <Tour />
     <Routes>
       <Route path="/" element={ <Home />}></Route>
       <Route path="/people" element={ <People />}></Route>
@@ -31,6 +41,7 @@ function App() {
   <Footer />
 </BrowserRouter>
 </AuthContext.Provider>
+</AppProvider>
     </div>
   );
 }
